@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design system para sistema de reclamações públicas mobile-first */
+
+@layer base {
+  :root {
+    /* Cores principais - azul moderno para cidadania */
+    --background: 0 0% 100%;
+    --foreground: 215 25% 27%;
+    
+    /* Interface cards */
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 27%;
+    
+    /* Primary - azul vibrante */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 217 91% 70%;
+    
+    /* Secondary - cinza suave */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 215 25% 27%;
+    
+    /* Accent - verde para ações positivas */
+    --accent: 142 76% 36%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Muted - cinza claro */
+    --muted: 220 14% 96%;
+    --muted-foreground: 215 16% 47%;
+    
+    /* Destrutivo - vermelho */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Bordas e inputs */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
+    
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+    
+    /* Gradientes */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
+    --gradient-secondary: linear-gradient(135deg, hsl(220 14% 96%), hsl(220 14% 89%));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted) / 0.3) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(142 76% 36%) 100%);
+    
+    /* Sombras */
+    --shadow-card: 0 1px 3px 0 hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow-elevated: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -4px hsl(0 0% 0% / 0.1);
+    --shadow-glow: 0 0 0 1px hsl(var(--primary) / 0.05), 0 4px 20px -2px hsl(var(--primary) / 0.1), 0 8px 32px -8px hsl(var(--primary) / 0.1);
+    
+    /* Bordas arredondadas */
+    --radius: 0.75rem;
+    --radius-sm: 0.5rem;
+    --radius-lg: 1rem;
+    
+    /* Categorias de reclamações */
+    --category-buraco: 45 93% 47%;
+    --category-iluminacao: 60 100% 50%;
+    --category-lixo: 142 76% 36%;
+    --category-saude: 348 83% 47%;
+    --category-seguranca: 0 84% 60%;
+    --category-transporte: 217 91% 60%;
+    
+    /* Transições */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 215 25% 27%;
+    --foreground: 0 0% 100%;
+    
+    --card: 215 25% 27%;
+    --card-foreground: 0 0% 100%;
+    
+    --primary: 217 91% 70%;
+    --primary-foreground: 215 25% 27%;
+    
+    --secondary: 215 25% 35%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 215 25% 35%;
+    --muted-foreground: 215 20% 70%;
+    
+    --accent: 142 76% 46%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 70%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 215 25% 35%;
+    --input: 215 25% 35%;
+    --ring: 217 91% 70%;
+    
+    --popover: 215 25% 27%;
+    --popover-foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* Mobile-first optimizations */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    touch-action: manipulation;
+  }
+
+  /* Mobile scroll improvements */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Improve touch targets */
+  button, 
+  [role="button"],
+  input,
+  select,
+  textarea {
+    touch-action: manipulation;
+  }
+
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+@layer utilities {
+  /* Gradient utilities */
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .bg-gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+
+  .bg-gradient-subtle {
+    background: var(--gradient-subtle);
+  }
+  
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  /* Shadow utilities */
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Category colors */
+  .bg-category-buraco {
+    background-color: hsl(var(--category-buraco));
+  }
+  
+  .bg-category-iluminacao {
+    background-color: hsl(var(--category-iluminacao));
+  }
+  
+  .bg-category-lixo {
+    background-color: hsl(var(--category-lixo));
+  }
+  
+  .bg-category-saude {
+    background-color: hsl(var(--category-saude));
+  }
+  
+  .bg-category-seguranca {
+    background-color: hsl(var(--category-seguranca));
+  }
+  
+  .bg-category-transporte {
+    background-color: hsl(var(--category-transporte));
+  }
+
+  /* Line clamp utilities */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
