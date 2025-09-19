@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { PostCard } from "@/components/ui/post-card";
 import { Button } from "@/components/ui/button";
 import { Filter, ArrowUpDown } from "lucide-react";
+import BannerCarousel from "@/components/BannerCarousel";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
@@ -112,14 +113,8 @@ const Home = () => {
 
   return (
     <div className="pb-4">
-      {/* Banner de Anúncio Local */}
-      <div className="mx-4 mt-4 mb-6">
-        <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl p-4 text-center shadow-glow border border-primary/20">
-          <h3 className="font-semibold text-base text-foreground mb-2">🍕 Pizzaria do Bairro</h3>
-          <p className="text-sm text-muted-foreground mb-2">Promoção especial para nossa comunidade!</p>
-          <p className="text-xs font-medium text-primary">Pizza grande por R$ 25,90 - Entrega grátis no seu bairro!</p>
-        </div>
-      </div>
+      {/* Banner Carousel */}
+      <BannerCarousel />
 
       {/* Filtros e Ordenação */}
       <div className="flex items-center justify-between px-4 mb-4">
